@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <h2 >Welcome</h2>
+    <button id="btn1">Click me</button>
+    
+
+    <div id="cube">
+        <h2>Hello</h2><br>
+    </div>
+    <button id="btn3">Animate</button>
+    <br>
+
+
+    <div id="text">
+        <br><br>
+        <p>My name is Tirth Bharatiya</p>
+    </div>
+    <button id="btn4">callback Function</button>
+
+
+    <br>
+    <div>
+        <p id="myText">Hello everyone</p>
+        <button id="btn5">Change The text</button>
+    </div>
+
+
+
+    
+</body>
+
+
+<script src="jquery.js"></script>
+<script>
+
+    //next line will ensure that jquery code excute when our page completely loaded
+    $(document).ready(function(){
+        
+        //instead of onclick in jquery we use
+        $('#btn1').click(fn1);
+
+        function fn1(){
+        $("h2").fadeToggle(2);     //for id $(#id) and for class $(.class)
+                                  //to select multiple id $(#id1, #id2)
+        }
+
+
+        $('#btn3').click(function(){
+            // $(id).animate(css-code, time, callback )
+            $('#cube').animate({
+                opacity: '1',
+                width: '150px',
+                height: '150px',
+                left: 'center',
+
+            },1000);
+        })
+        function fn1(){
+            alert('done');
+        }
+        $('#btn4').click(function(){
+            //here in fn1 fn2 is callback function which will excute  after 2000ms
+            $('#text').slideUp(1000,fn1);
+            
+             
+        })
+
+
+        $('#btn5').click(function(){
+            //DOM manipulation in JQuery can acheive using following function:
+            // text(), html(), attr(), css()
+
+
+
+            // getter  method $(id).text()
+            
+            //setter method
+            //$('#myText').text('My name is Tirth');
+            $('#myText').html('my  name is <b>Tirth</b>')
+            // $('#myText').css('color');    //to get the value
+            $('#myText').css('color', 'red');  //to change the value
+            
+            //$('#myText').attr('id');    //to get the value of id
+            $('#myText').attr('id', 'newText');   //to change the value  of attribute
+        
+        })
+    })
+    
+</script>
+</html>

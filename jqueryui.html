@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery UI</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="jqueryui/jquery-ui.css" rel="stylesheet">
+    <link href="jqueryui/jquery-ui.min.css" rel="stylesheet">
+    <link href="jqueryui/jquery-ui.structure.css" rel="stylesheet">
+    <link href="jqueryui/jquery-ui.structure.min.css" rel="stylesheet">
+    <link href="jqueryui/jquery-ui.theme.css" rel="stylesheet">
+    <link href="jqueryui/jquery-ui.theme.min.css" rel="stylesheet">
+
+</head>
+    
+
+<body>
+    <!-- calender -->
+    <div>
+        <input type="text" placeholder="Enter date" id="calenderDate">
+    </div>
+
+    <!-- tooltip -->
+    <div>
+        <p title="tirth bharatiya" id="toolTip">My name<br> is <br>Tirth Bharatiya</p>
+    </div>
+
+    <!-- accordian -->
+    <div id="accordion">
+        <h3>C</h3>
+        <p>C is the first programming language thaught in collage to the 1st year stunde</p>
+    
+        <h3>C++</h3>
+        <p>C++ is the best language for the data structure and algo</p>
+        
+        <h3>JS</h3>
+        <p>JS is one of the language which is use in both front end and also backend</p>
+    
+        <h3>JAVA</h3>
+        <p>Java is one of the best language for backend</p>
+
+    </div>
+
+    <!-- dialog -->
+    <button id="btn1">Click  here to open dialog box</button>
+    <div id="messagebox" style="visibility:hidden;"></div>
+        <h3>This is just a dummy title</h3>
+        <button>OK</button>
+    </div>
+
+    <!-- Autocomplete -->
+    <div id="autoComplete">
+        <h4>Enter City: </h4><input type="text" id="cities">
+    </div>
+</body>
+
+
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jqueryui/jquery-ui.js" type="text/javascript"></script>
+<script src="jqueryui/jquery-ui.min.js" type="text/javascript"></script>
+
+
+<script>
+    //calender
+    $("#calenderDate").datepicker({
+        numberOfMonths: 1,
+        changeYear: true,
+        changeMonth: true,
+        showOtherMonths: true,
+        minDate: new  Date(2017, 0, 1),
+        maxDate: new Date(2020, 0, 1)
+    });
+
+    //tooltip
+    $("#toolTip").tooltip({
+        track: true,     //title will move along mouse courser
+        show:{effect:"highlight", duration: 30000}
+        
+    })
+
+    //accordian
+    $("#accordion").accordion({
+        collapsible: true,
+        event:"mouseover",
+        border: 10,
+    });
+
+
+    //dialog
+    $("#btn1").click(function(){
+        $("#messagebox").css('visibility', 'visible')
+        $("#messagebox").dialog({
+            
+            title: "Simple message box",
+            draggable: true,
+            width: 300,
+            height: 300,
+            modal: true,   //user can't do anything before close the dialog box
+
+            buttons: [
+                {
+                    text: "close",
+                    icon: "ui-icon-heart",
+                    click: function(){
+                        $(this).dialog("close");
+                    }
+                },
+                {
+                    text: "ok",
+                    icon: "ui-icon-heart",
+                    click: function(){
+                        $(this).dialog("close");
+                    }
+                }
+            ]
+        })
+    })
+    
+
+    //autocomplete
+    var city = ["Pune", "Delhi", "New York", "Mumbai", "Dubai", "Anad", "Ahemdabad", "Nadiad", "Surat"]
+    $("#cities").autocomplete({
+        source: city,
+    },{
+        autoFocus: true,
+        delay: 0,
+        minLength: 3,
+    })
+
+</script>
+</html>
